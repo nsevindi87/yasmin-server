@@ -1,21 +1,18 @@
-import express from 'express';
-import "./config/Database.js"
-import userRoute from './controller/user-route.js'
-import wordRoute from './controller/word-route.js'
-import todoRoute from "./controller/todo-route.js"
-import cors from 'cors'
-import errorHandler from './middleware/errorHandler.js';
+import express from "express";
+import cors from "cors";
 
-const app = express();
+//ROUTES IMPORT
+import WordsRoute from "./Routes/WordsRoute.js";
+
+const app = express()
+
 // middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan('tiny'))
+app.use(express.json()); // express.json() is a built-in middleware  that parses incoming request bodies in JSON format.
+app.use(express.urlencoded({ extended: true }));//a built-in middleware that parses incoming request bodies in x-www-form-urlencoded format, with the option "extended: true" allowing for rich objects and arrays to be encoded into the URL-encoded format.
 
-// API
-app.use("/api/v1/users", userRoute);
-app.use("/api/v1/words", wordRoute);
-app.use(errorHandler)
+//ROUTES
+app.use("/words", WordsRoute);
+
 
 export default app;
