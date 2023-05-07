@@ -14,5 +14,8 @@ app.use(express.urlencoded({ extended: true }));//a built-in middleware that par
 //ROUTES
 app.use("/words", WordsRoute);
 
+const port = 8080
 
-export default app;
+app.listen(port,() =>{
+    console.log(` app listening on port http://localhost:${port}/api/v1/`);
+})
