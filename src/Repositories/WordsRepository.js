@@ -1,9 +1,23 @@
 import Words from "../model/WordsModel.js"
 
+let words = [
+    {
+      id: 1,
+      name: 'Computer',
+    },
+    {
+      id: 2,
+      name: 'Tablet',
+    },
+    {
+      id: 3,
+      name: 'Phone',
+    },
+  ];
 
 //Get all Data
-const getWordsList = async () => {
-    const words = await Words.findAll()
+const getWordsList = () => {
+    //const words = await Words.findAll()
     return words
 }
 
