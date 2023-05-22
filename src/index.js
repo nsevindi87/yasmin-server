@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import "./config/connection.js"
 
 //ROUTES IMPORT
 import WordsRoute from "./controller/WordsRoute.js";
@@ -15,7 +16,9 @@ app.use(express.urlencoded({ extended: true }));//a built-in middleware that par
 app.use("/words", WordsRoute);
 
 
-const port = 3001
+
+
+const port = 3302
 app.listen(port,() =>{
     console.log(` app listening on port http://localhost:${port}/api/v1/`);
 })

@@ -4,7 +4,7 @@ services:
     container_name: mysql-yasmin
     image: mysql
     ports:
-      - 3308:3308
+      - 3307:3307
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=password

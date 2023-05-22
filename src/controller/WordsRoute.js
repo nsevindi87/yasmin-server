@@ -1,5 +1,6 @@
 import express from "express";
-import { getWordsList, getGreenList,getYellowList,getRedList, deleteGreenWord, deleteYellowWord,deleteDangerWord,deleteAllListWord,addNewWord } from "../repositories/wordsRepository.js"
+import { getWordsList} from "../repositories/wordsRepository.js"
+//getGreenList,getYellowList,getRedList, deleteGreenWord, deleteYellowWord,deleteDangerWord,deleteAllListWord,addNewWord } from "../repositories/wordsRepository.js"
 
 const router = express.Router();
 
@@ -7,6 +8,8 @@ const router = express.Router();
 router.get("/", (req, res) => {
     res.json(getWordsList())
 });
+
+/* 
 //GET GREEN LIST
 router.get("/success", (req, res) => {
     res.json(getGreenList())
@@ -27,13 +30,13 @@ router.post("/", (req, res) => {
 });
 
 
+ */
 
 
 
 
 
-
-
+/* 
 
 //DELETE GREEN WORD
 router.delete("/success/:id", (req, res) => {
@@ -65,7 +68,7 @@ router.delete("/:id", (req, res) => {
 
 
 
-
+ */
 
 
 
