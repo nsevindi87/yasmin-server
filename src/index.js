@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 
 //ROUTES IMPORT
-import WordsRoute from "./Routes/WordsRoute.js";
+import WordsRoute from "./controller/WordsRoute.js";
 
 const app = express()
 
@@ -14,4 +14,8 @@ app.use(express.urlencoded({ extended: true }));//a built-in middleware that par
 //ROUTES
 app.use("/words", WordsRoute);
 
-export default app;
+
+const port = 3001
+app.listen(port,() =>{
+    console.log(` app listening on port http://localhost:${port}/api/v1/`);
+})
