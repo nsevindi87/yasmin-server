@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  mysql-yasmin:
+    container_name: mysql-yasmin
+    image: mysql
+    ports:
+      - 3308:3308
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_PASSWORD=password
+      - MYSQL_USER=admin
+      - MYSQL_DATABASE=yasmin
+    volumes:
+      - ./mysqlDB:/var/lib/meinsql/data
+  phpmyadmin-yasmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma-yasmin
+    depends_on:
+      - mysql-yasmin
+    environment:
+      PMA_HOST: mysql-yasmin
+    restart: always
+    ports:
+      - 8080:80
