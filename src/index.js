@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import "./config/connection.js"
+import "./config/database.js"
 
 //ROUTES IMPORT
 import WordsRoute from "./controller/WordsRoute.js";
@@ -20,3 +20,5 @@ const port = 3302
 app.listen(port,() =>{
     console.log(` app listening on port http://localhost:${port}`);
 })
+
+

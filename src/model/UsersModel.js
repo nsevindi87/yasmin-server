@@ -1,4 +1,3 @@
-//import sequelize from "../config/connection.js"
 import { Sequelize } from "sequelize"; 
 import { DataTypes } from "sequelize"
 
@@ -6,32 +5,20 @@ const sequelize = new Sequelize('yasmin', 'admin', 'password', {
     host: 'localhost',
     dialect: 'mysql'
   });
-  
-const Word = sequelize.define("Words", {
+
+const Users = sequelize.define("Users", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    word: {
+    userName: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    wordMeaning: {
+    userEmail: {
         type: DataTypes.TEXT,
-        allowNull: true
-    },
-    wordSecondMeaning: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
-    wordNote: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
-    wordCategory: {
-        type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: false
     },
     createdAt: {
         type: DataTypes.DATE
@@ -43,4 +30,4 @@ const Word = sequelize.define("Words", {
 
 
 
-export default Word;
+export default Users;

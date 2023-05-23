@@ -1,25 +1,21 @@
-import Words from "../model/WordsModel.js"
+import Word from "../model/WordsModel.js"
 
-let words = [
+
+const words = [
     {
-      id: 1,
-      name: 'Computer',
-    },
-    {
-      id: 2,
-      name: 'Tablet',
-    },
-    {
-      id: 3,
-      name: 'Phone',
-    },
-  ];
+        id:3,
+        name:"ali"
+    }
+]
+
 
 //Get all Data
 const getWordsList = () => {
-    //const words = await Words.findAll()
-    return words
-}
+    
+     return Word.findAll()
+   
+  
+  }
 
 
 
@@ -72,6 +68,6 @@ const addNewWord = (pData,res) => {
     return res.status(200).send({ message: `${pData} added` })
 }
  */
-export {
+export default {
     getWordsList, //getGreenList, getYellowList, getRedList, deleteGreenWord, deleteYellowWord, deleteDangerWord, deleteAllListWord,addNewWord
 }
