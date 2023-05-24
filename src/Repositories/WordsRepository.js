@@ -16,7 +16,13 @@ const createWord = async (pWord)=>{
     }
 }
 
-
+const deleteWord = async (pId) => {
+    return await Words.destroy({
+        where:{
+            id:pId
+        }
+    })
+}
 
 /*
 
@@ -34,10 +40,7 @@ const deleteDangerWord = (pId, res) => {
     words = words.filter(word => word.id != pId);
     return res.status(200).send({ message: `${pId} deleted` });
 }
-const deleteAllListWord = (pId, res) => {
-    words = words.filter(word => word.id != pId);
-    return res.status(200).send({ message: `${pId} deleted` });
-}
+
 
 const addNewWord = (pData,res) => {
     const uuid = uuidv4();
@@ -47,5 +50,5 @@ const addNewWord = (pData,res) => {
 }
  */
 export default {
-    getWordsList, createWord//getGreenList, getYellowList, getRedList, deleteGreenWord, deleteYellowWord, deleteDangerWord, deleteAllListWord,addNewWord
+    getWordsList, createWord, deleteWord//getGreenList, getYellowList, getRedList, deleteGreenWord, deleteYellowWord, deleteDangerWord, deleteAllListWord,addNewWord
 }

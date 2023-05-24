@@ -25,45 +25,12 @@ router.post("/", async (req, res, next) => {
     }
 });
 
-
-
-
-
-
-
-/* 
-
-//DELETE GREEN WORD
-router.delete("/success/:id", (req, res) => {
-    const requestedPostId = req.params.id;
-    deleteGreenWord(requestedPostId, res)
-    res.json("deleted")
+//DELETE WORD
+router.delete("/:id", async (req, res) => {
+        const requestedPostId = req.params.id;
+        const deleteWord = await wordsRepository.deleteWord(requestedPostId);
+        return res.send(`word ${requestedPostId} is deleted`)
 });
-
-//DELETE YELLOW WORD
-router.delete("/warning/:id", (req, res) => {
-    const requestedPostId = req.params.id;
-    deleteYellowWord(requestedPostId, res)
-    res.json("deleted")
-});
-
-//DELETE RED WORD
-router.delete("/danger/:id", (req, res) => {
-    const requestedPostId = req.params.id;
-    deleteDangerWord(requestedPostId, res)
-    res.json("deleted")
-});
-
-//DELETE ALLLIST WORD
-router.delete("/:id", (req, res) => {
-    const requestedPostId = req.params.id;
-    deleteAllListWord(requestedPostId, res)
-    res.json("deleted")
-});
-
-
-
- */
 
 
 
