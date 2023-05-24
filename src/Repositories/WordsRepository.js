@@ -2,35 +2,21 @@ import Words from "../model/WordsModel.js"
 
 //Get all Data
 const getWordsList = () => {
-    
      return Words.findAll()
-   
-  
   }
 
 
-
-
-
-
-
-//Get GREEN Data
-const getGreenList = () => {
-    const greenList = Words.filter((word) => word.wordCategory === "success")
-    return greenList
+//Add New Word to List
+const createWord = async (pWord)=>{
+    try {
+        const newPost = await Words.create(pWord)
+        return newPost
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-//Get YELLOW Data
-const getYellowList = () => {
-    const yellowList = Words.filter((word) => word.listGroup === "warning")
-    return yellowList
-}
 
-//Get RED Data
-const getRedList = () => {
-    const redList = Words.filter((word) => word.listGroup === "danger")
-    return redList
-}
 
 /*
 
@@ -61,5 +47,5 @@ const addNewWord = (pData,res) => {
 }
  */
 export default {
-    getWordsList, //getGreenList, getYellowList, getRedList, deleteGreenWord, deleteYellowWord, deleteDangerWord, deleteAllListWord,addNewWord
+    getWordsList, createWord//getGreenList, getYellowList, getRedList, deleteGreenWord, deleteYellowWord, deleteDangerWord, deleteAllListWord,addNewWord
 }

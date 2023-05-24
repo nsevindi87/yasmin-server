@@ -4,12 +4,6 @@ import express from "express";
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 
-
-//GET WORDS LIST
-//router.get("/", (req, res) => {
-//    res.json(getWordsList())
-//});
-
 router.get('/', async (req, res, next) => {
     try {
        let words = await wordsRepository.getWordsList();
@@ -20,31 +14,18 @@ router.get('/', async (req, res, next) => {
  });
  
 
-
-
-
-//GET GREEN LIST
-router.get("/success", (req, res) => {
-    res.json(getGreenList())
-});
-//GET YELLOW LIST
-router.get("/warning", (req, res) => {
-    res.json(getYellowList())
-});
-//GET YELLOW LIST
-router.get("/danger", (req, res) => {
-    res.json(getRedList())
-});
-
-/*
 //ADD NEW WORD
-router.post("/", (req, res) => {
-    const data= req.body;
-    res.json(addNewWord(data,res))
+router.post("/", async (req, res, next) => {
+    try {
+        const word = req.body
+        const newWord = await wordsRepository.createWord(word);
+        return res.send(newWord)
+    } catch (error) {
+        return next({status:500, message:error.message})
+    }
 });
 
 
- */
 
 
 
