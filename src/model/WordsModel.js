@@ -1,13 +1,13 @@
 //import sequelize from "../config/connection.js"
-import { Sequelize } from "sequelize"; 
-import { DataTypes } from "sequelize"
+import { Sequelize,DataTypes } from "sequelize";
+import Users from './UsersModel.js';
 
 const sequelize = new Sequelize('yasmin', 'admin', 'password', {
     host: 'localhost',
     dialect: 'mysql'
-  });
-  
-const Word = sequelize.define("Words", {
+});
+
+const Words = sequelize.define("Words", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -33,6 +33,14 @@ const Word = sequelize.define("Words", {
         type: DataTypes.TEXT,
         allowNull: true
     },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Users,
+            key: 'id',
+        }
+    },
     createdAt: {
         type: DataTypes.DATE
     },
@@ -41,6 +49,7 @@ const Word = sequelize.define("Words", {
     }
 });
 
+Words.belongsTo(Users, { foreignKey: 'userId' });
 
 
-export default Word;
+export default Words;

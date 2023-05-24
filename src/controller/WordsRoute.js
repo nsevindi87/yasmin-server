@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 
 
 
-/* 
+
 //GET GREEN LIST
 router.get("/success", (req, res) => {
     res.json(getGreenList())
@@ -36,6 +36,7 @@ router.get("/danger", (req, res) => {
     res.json(getRedList())
 });
 
+/*
 //ADD NEW WORD
 router.post("/", (req, res) => {
     const data= req.body;

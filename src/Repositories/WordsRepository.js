@@ -1,18 +1,9 @@
-import Word from "../model/WordsModel.js"
-
-
-const words = [
-    {
-        id:3,
-        name:"ali"
-    }
-]
-
+import Words from "../model/WordsModel.js"
 
 //Get all Data
 const getWordsList = () => {
     
-     return Word.findAll()
+     return Words.findAll()
    
   
   }
@@ -22,25 +13,26 @@ const getWordsList = () => {
 
 
 
-/* 
+
 //Get GREEN Data
 const getGreenList = () => {
-    const greenList = words.filter((word) => word.listGroup === "success")
+    const greenList = Words.filter((word) => word.wordCategory === "success")
     return greenList
 }
 
 //Get YELLOW Data
 const getYellowList = () => {
-    const yellowList = words.filter((word) => word.listGroup === "warning")
+    const yellowList = Words.filter((word) => word.listGroup === "warning")
     return yellowList
 }
 
 //Get RED Data
 const getRedList = () => {
-    const redList = words.filter((word) => word.listGroup === "danger")
+    const redList = Words.filter((word) => word.listGroup === "danger")
     return redList
 }
 
+/*
 
 const deleteGreenWord = (pId, res) => {
     words = words.filter(word => word.id != pId);
