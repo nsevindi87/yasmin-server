@@ -32,6 +32,17 @@ router.delete("/:id", async (req, res) => {
         return res.send(`word ${requestedPostId} is deleted`)
 });
 
+router.put("/:id", async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const updatedWord = req.body;
+        const newWord = await wordsRepository.updateWordById(id, updatedWord);
+        return res.status(200).send(newWord)
+    } catch (error) {
+        next({status:500, message:error.message})
+    }
+        
+});
 
 
 export default router;

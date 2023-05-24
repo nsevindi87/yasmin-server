@@ -24,31 +24,20 @@ const deleteWord = async (pId) => {
     })
 }
 
-/*
-
-const deleteGreenWord = (pId, res) => {
-    words = words.filter(word => word.id != pId);
-    return res.status(200).send({ message: `${pId} deleted` });
+//Update Word to List
+const updateWordById = async (pId, updatedPost)=>{
+    try {
+        const word = await Words.findByPk(pId)
+        if(word){
+            await Words.update(updatedPost, {where: {id: pId}})
+            return
+        }
+        return {msg: "No word found with this ID"}
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-const deleteYellowWord = (pId, res) => {
-    words = words.filter(word => word.id != pId);
-    return res.status(200).send({ message: `${pId} deleted` });
-}
-
-const deleteDangerWord = (pId, res) => {
-    words = words.filter(word => word.id != pId);
-    return res.status(200).send({ message: `${pId} deleted` });
-}
-
-
-const addNewWord = (pData,res) => {
-    const uuid = uuidv4();
-    pData.id = uuid
-    words.push(pData)
-    return res.status(200).send({ message: `${pData} added` })
-}
- */
 export default {
-    getWordsList, createWord, deleteWord//getGreenList, getYellowList, getRedList, deleteGreenWord, deleteYellowWord, deleteDangerWord, deleteAllListWord,addNewWord
+    getWordsList, createWord, deleteWord, updateWordById
 }
