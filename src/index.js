@@ -4,6 +4,7 @@ import "./config/database.js"
 
 //ROUTES IMPORT
 import WordsRoute from "./controller/WordsRoute.js";
+import WordToListRoute from "./controller/WordToListRoute.js"
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROUTES
 app.use("/words", WordsRoute);
+app.use("/wordtolist", WordToListRoute);
 
 const port = 3302
 
