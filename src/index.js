@@ -5,6 +5,7 @@ import "./config/database.js"
 //ROUTES IMPORT
 import WordsRoute from "./controller/WordsRoute.js";
 import WordToListRoute from "./controller/WordToListRoute.js"
+import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
 
 const app = express()
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 //ROUTES
 app.use("/words", WordsRoute);
 app.use("/wordtolist", WordToListRoute);
+app.use("/delwordfromlist", DelWordFromListRoute);
 
 const port = 3302
 
