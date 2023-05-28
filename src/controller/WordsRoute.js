@@ -1,6 +1,4 @@
 import express from "express";
-//import { getWordsList} from "../repositories/wordsRepository.js"
-//getGreenList,getYellowList,getRedList, deleteGreenWord, deleteYellowWord,deleteDangerWord,deleteAllListWord,addNewWord } from "../repositories/wordsRepository.js"
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 

@@ -6,6 +6,7 @@ import "./config/database.js"
 import WordsRoute from "./controller/WordsRoute.js";
 import WordToListRoute from "./controller/WordToListRoute.js"
 import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
+import QuizQuestionsRoute from "./controller/QuizQuestionsRoute.js"
 
 const app = express()
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/words", WordsRoute);
 app.use("/wordtolist", WordToListRoute);
 app.use("/delwordfromlist", DelWordFromListRoute);
+app.use("/quizquestions", QuizQuestionsRoute);
 
 const port = 3302
 

@@ -1,4 +1,7 @@
 import Words from "../model/WordsModel.js"
+import QuizQuestions from "../model/QuizQuestionsModel.js"
+import { Sequelize } from "sequelize";
+
 
 //Get all Data
 const getWordsList = () => {
@@ -38,6 +41,26 @@ const updateWordById = async (pId, updatedPost)=>{
     }
 }
 
+
+//Get all Data
+const getQuizQuestions = async () => {
+    try {
+        const questions = await QuizQuestions.findAll({
+          order: Sequelize.literal('RAND()'),
+          limit: 5,
+        });
+        console.log("Context" + questions);
+        return questions;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+ }
+
+
+
+
+
 export default {
-    getWordsList, createWord, deleteWord, updateWordById
+    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions
 }

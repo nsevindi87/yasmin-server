@@ -6,31 +6,27 @@ const sequelize = new Sequelize('yasmin', 'admin', 'password', {
     dialect: 'mysql'
 });
 
-const Words = sequelize.define("Words", {
+const QuizQuestions = sequelize.define("QuizQuestions", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    word: {
+    question_text: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    wordMeaning: {
+    options: {
         type: DataTypes.TEXT,
-        allowNull: true
     },
-    wordSecondMeaning: {
+    correct_word: {
         type: DataTypes.TEXT,
-        allowNull: true
     },
-    wordNote: {
+    english_example: {
         type: DataTypes.TEXT,
-        allowNull: true
     },
-    wordCategory: {
+    german_example: {
         type: DataTypes.TEXT,
-        allowNull: true
     },
     createdAt: {
         type: DataTypes.DATE
@@ -41,4 +37,4 @@ const Words = sequelize.define("Words", {
 });
 
 
-export default Words;
+export default QuizQuestions;
