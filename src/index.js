@@ -7,6 +7,7 @@ import WordsRoute from "./controller/WordsRoute.js";
 import WordToListRoute from "./controller/WordToListRoute.js"
 import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
 import QuizQuestionsRoute from "./controller/QuizQuestionsRoute.js"
+import FindExampleRoute from "./controller/FindExampleRoute.js"
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use("/words", WordsRoute);
 app.use("/wordtolist", WordToListRoute);
 app.use("/delwordfromlist", DelWordFromListRoute);
 app.use("/quizquestions", QuizQuestionsRoute);
+app.use("/findExample", FindExampleRoute);
 
 const port = 3302
 

@@ -1,6 +1,9 @@
 import Words from "../model/WordsModel.js"
 import QuizQuestions from "../model/QuizQuestionsModel.js"
+import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import { Sequelize } from "sequelize";
+import { Op } from "sequelize";
+
 
 
 //Get all Data
@@ -57,10 +60,37 @@ const getQuizQuestions = async () => {
       }
  }
 
+//Get Sentences
+const getFilteredSentences = async (pValue) => {
+    try {
+        const sentences = await EngTrSentenceEx.findAll({
+            where: {
+                [Op.or]: [
+                  {
+                    english: {
+                      [Op.like]: `%${pValue}%`
+                    }
+                  },
+                  {
+                    turkish: {
+                      [Op.like]: `%${pValue}%`
+                    }
+                  }
+                ]
+              }
+        });
+        return sentences;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+ }
+
+
 
 
 
 
 export default {
-    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions
+    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences
 }
