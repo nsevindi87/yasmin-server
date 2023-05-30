@@ -3,6 +3,7 @@ import QuizQuestions from "../model/QuizQuestionsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
+import EngToTRModel from "../model/EngToTRModel.js"
 
 
 
@@ -21,6 +22,28 @@ const createWord = async (pWord)=>{
         console.log(error)
     }
 }
+
+
+
+
+const createLib= async (data)=>{
+  try {
+      const newPost = await EngToTRModel.bulkCreate(data)
+      return "olustu"
+  } catch (error) {
+      console.log("hatali")
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 const deleteWord = async (pId) => {
     return await Words.destroy({
@@ -92,5 +115,5 @@ const getFilteredSentences = async (pValue) => {
 
 
 export default {
-    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences
+    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences,createLib
 }
