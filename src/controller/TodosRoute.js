@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-        let words = await wordsRepository.getWordsList();
+        let words = await wordsRepository.getTodoList();
         return res.status(200).send(words);
     } catch (error) {
         return next({ status: 404, message: error })
@@ -16,13 +16,14 @@ router.get('/', async (req, res, next) => {
 router.post("/", async (req, res, next) => {
     try {
         const word = req.body
-        const newWord = await wordsRepository.createWord(word);
+        const newWord = await wordsRepository.createTodo(word);
         return res.send(newWord)
     } catch (error) {
         return next({ status: 500, message: error.message })
     }
 });
 
+/* 
 //DELETE WORD
 router.delete("/:id", async (req, res) => {
     const requestedPostId = req.params.id;
@@ -40,6 +41,6 @@ router.put("/:id", async (req, res, next) => {
         next({ status: 500, message: error.message })
     }
 
-});
+}); */
 
 export default router;

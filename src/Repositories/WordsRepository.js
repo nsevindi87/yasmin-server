@@ -3,6 +3,7 @@ import QuizQuestions from "../model/QuizQuestionsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
+import TodoList from "../model/TodoListModel.js"
 
 
 
@@ -16,6 +17,22 @@ const getWordsList = () => {
 const createWord = async (pWord)=>{
     try {
         const newPost = await Words.create(pWord)
+        return newPost
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//Get all Data
+const getTodoList = () => {
+     return TodoList.findAll()
+  }
+
+
+//Add New Word to List
+const createTodo = async (pWord)=>{
+    try {
+        const newPost = await TodoList.create(pWord)
         return newPost
     } catch (error) {
         console.log(error)
@@ -97,12 +114,6 @@ const createLib= async (data)=>{
   }
 }
 
-
-
-
-
-
-
 export default {
-    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences,createLib
+    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences,createLib,getTodoList,createTodo
 }

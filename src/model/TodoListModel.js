@@ -5,18 +5,22 @@ const sequelize = new Sequelize('yasmin', 'admin', 'password', {
     dialect: 'mysql'
 });
 
-const EngTrSentenceEx = sequelize.define("EngTrSentenceEx", {
+const TodoList = sequelize.define("TodoList", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    english: {
-        type: DataTypes.STRING(1000),
+    task: {
+        type: DataTypes.STRING,
         allowNull: false
     },
-    turkish: {
-        type: DataTypes.TEXT,
+    date: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    time: {
+        type: DataTypes.TIME,
         allowNull: false
     }
 },
@@ -25,4 +29,4 @@ const EngTrSentenceEx = sequelize.define("EngTrSentenceEx", {
     }
 );
 
-export default EngTrSentenceEx;
+export default TodoList;
