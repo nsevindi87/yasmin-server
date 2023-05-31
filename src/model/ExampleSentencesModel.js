@@ -1,4 +1,3 @@
-//import sequelize from "../config/connection.js"
 import { Sequelize, DataTypes } from "sequelize";
 
 const sequelize = new Sequelize('yasmin', 'admin', 'password', {
@@ -19,17 +18,11 @@ const EngTrSentenceEx = sequelize.define("EngTrSentenceEx", {
     turkish: {
         type: DataTypes.TEXT,
         allowNull: false
-    }, createdAt: {
-        type: DataTypes.DATE,
-        defaultValue: Sequelize.NOW,
-        allowNull: true
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
-        defaultValue: Sequelize.NOW,
-        allowNull: true
     }
-});
-
+},
+    {
+        timestamps:false
+    }
+);
 
 export default EngTrSentenceEx;

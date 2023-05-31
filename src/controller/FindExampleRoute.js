@@ -2,7 +2,6 @@ import express from "express";
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 
-
 router.get('/', async (req, res, next) => {
     try {
         const { filter } = req.query;
