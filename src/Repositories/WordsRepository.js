@@ -23,7 +23,7 @@ const createWord = async (pWord)=>{
     }
 }
 
-//Get all Data
+//Get all TodoList
 const getTodoList = () => {
      return TodoList.findAll()
   }
@@ -94,8 +94,10 @@ const getFilteredSentences = async (pValue) => {
                     }
                   }
                 ]
-              }
-        });
+              },
+        limit:10
+        })
+        console.log(pValue)
         return sentences;
       } catch (error) {
         console.error(error);
