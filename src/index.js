@@ -8,7 +8,6 @@ import WordToListRoute from "./controller/WordToListRoute.js"
 import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
 import QuizQuestionsRoute from "./controller/QuizQuestionsRoute.js"
 import FindExampleRoute from "./controller/FindExampleRoute.js"
-import CreateLibRoute from "./controller/CreateLibRoute.js"
 const app = express()
 
 // middleware
@@ -22,7 +21,6 @@ app.use("/wordtolist", WordToListRoute);
 app.use("/delwordfromlist", DelWordFromListRoute);
 app.use("/quizquestions", QuizQuestionsRoute);
 app.use("/findExample", FindExampleRoute);
-app.use("/createlib", CreateLibRoute);
 
 const port = 3302
 

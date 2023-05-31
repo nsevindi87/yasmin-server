@@ -13,4 +13,15 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+//ADD NEW WORD
+router.post("/", async (req, res, next) => {
+    try {
+        const data = req.body
+        const newWord = await wordsRepository.createLib(data);
+        return res.send(newWord)
+    } catch (error) {
+        return next({ status: 500, message: error.message })
+    }
+});
+
 export default router
