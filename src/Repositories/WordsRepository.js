@@ -25,7 +25,9 @@ const createWord = async (pWord)=>{
 
 //Get all TodoList
 const getTodoList = () => {
-     return TodoList.findAll()
+     return TodoList.findAll({
+      order: [['date', 'ASC'], ['time', 'ASC']],
+     })
   }
 
 
