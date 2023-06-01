@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 //ADD NEW TODO
 router.post("/", async (req, res, next) => {
     try {
-        const word = req.body
+        console.log(word.date)
         const newWord = await wordsRepository.createTodo(word);
         return res.send(newWord)
     } catch (error) {
@@ -30,24 +30,17 @@ router.delete("/:id", async (req, res) => {
     return res.send(`word ${requestedTodoId} is deleted`)
 });
 
-/* 
-//DELETE WORD
-router.delete("/:id", async (req, res) => {
-    const requestedPostId = req.params.id;
-    const deleteWord = await wordsRepository.deleteWord(requestedPostId);
-    return res.send(`word ${requestedPostId} is deleted`)
-});
-
+//UPDATE TODO
 router.put("/:id", async (req, res, next) => {
     try {
         const id = req.params.id;
-        const updatedWord = req.body;
-        const newWord = await wordsRepository.updateWordById(id, updatedWord);
+        const updatedTodo = req.body;
+        const newWord = await wordsRepository.updateTodoById(id, updatedTodo);
         return res.status(200).send(newWord)
     } catch (error) {
         next({ status: 500, message: error.message })
     }
 
-}); */
+});
 
 export default router;

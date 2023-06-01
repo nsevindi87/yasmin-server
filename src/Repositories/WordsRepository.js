@@ -6,7 +6,10 @@ import { Op } from "sequelize";
 import TodoList from "../model/TodoListModel.js"
 
 
-
+/* ==============================================================================================
+== //!    WORDS  - ADD - DELETE  - EDIT
+==
+==================================================================================================*/
 //Get all Data
 const getWordsList = () => {
      return Words.findAll()
@@ -23,31 +26,6 @@ const createWord = async (pWord)=>{
     }
 }
 
-//Get all TodoList
-const getTodoList = () => {
-     return TodoList.findAll({
-      order: [['date', 'ASC'], ['time', 'ASC']],
-     })
-  }
-
-
-//Add New Word to List
-const createTodo = async (pWord)=>{
-    try {
-        const newPost = await TodoList.create(pWord)
-        return newPost
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-const deleteTodo = async (pId) => {
-    return await TodoList.destroy({
-        where:{
-            id:pId
-        }
-    })
-}
 
 const deleteWord = async (pId) => {
     return await Words.destroy({
@@ -71,6 +49,10 @@ const updateWordById = async (pId, updatedPost)=>{
     }
 }
 
+/* ==============================================================================================
+== //!    QUIZ
+==
+==================================================================================================*/
 
 //Get all Data
 const getQuizQuestions = async () => {
@@ -86,6 +68,11 @@ const getQuizQuestions = async () => {
         return [];
       }
  }
+
+ /* ==============================================================================================
+== //!    SENTENCES
+==
+==================================================================================================*/
 
 //Get Sentences
 const getFilteredSentences = async (pValue) => {
@@ -115,17 +102,56 @@ const getFilteredSentences = async (pValue) => {
       }
  }
 
+/* ==============================================================================================
+== //!    TODO
+==
+==================================================================================================*/
 
 
-const createLib= async (data)=>{
+
+//Get all TodoList
+const getTodoList = () => {
+  return TodoList.findAll({
+   order: [['date', 'ASC'], ['time', 'ASC']],
+  })
+}
+
+
+//Add New Word to List
+const createTodo = async (pWord)=>{
+ try {
+     const newPost = await TodoList.create(pWord)
+     return newPost
+ } catch (error) {
+     console.log(error)
+ }
+}
+
+const deleteTodo = async (pId) => {
+ return await TodoList.destroy({
+     where:{
+         id:pId
+     }
+ })
+}
+
+//Update Todo
+const updateTodoById = async (pId, updatedPost)=>{
   try {
-      const newPost = await EngTrSentenceEx.bulkCreate(data)
-      return "olustu"
+      const word = await TodoList.findByPk(pId)
+      if(word){
+          await Words.update(updatedPost, {where: {id: pId}})
+          return
+      }
+      return {msg: "No word found with this ID"}
   } catch (error) {
-      console.log("hatali")
+      console.log(error)
   }
 }
 
+
 export default {
-    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences,createLib,getTodoList,createTodo,deleteTodo
+    getWordsList, createWord, deleteWord, updateWordById,
+     getQuizQuestions,getFilteredSentences,getTodoList,
+     createTodo,deleteTodo,updateTodoById
 }
