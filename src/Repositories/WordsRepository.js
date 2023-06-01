@@ -140,7 +140,7 @@ const updateTodoById = async (pId, updatedPost)=>{
   try {
       const word = await TodoList.findByPk(pId)
       if(word){
-          await Words.update(updatedPost, {where: {id: pId}})
+          await TodoList.update(updatedPost, {where: {id: pId}})
           return
       }
       return {msg: "No word found with this ID"}
