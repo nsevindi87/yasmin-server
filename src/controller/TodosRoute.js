@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 });
 
 
-//ADD NEW WORD
+//ADD NEW TODO
 router.post("/", async (req, res, next) => {
     try {
         const word = req.body
@@ -21,6 +21,13 @@ router.post("/", async (req, res, next) => {
     } catch (error) {
         return next({ status: 500, message: error.message })
     }
+});
+
+//DELETE TODO
+router.delete("/:id", async (req, res) => {
+    const requestedTodoId = req.params.id;
+    const deleteWord = await wordsRepository.deleteTodo(requestedTodoId);
+    return res.send(`word ${requestedTodoId} is deleted`)
 });
 
 /* 

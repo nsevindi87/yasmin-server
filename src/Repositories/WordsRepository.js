@@ -41,6 +41,14 @@ const createTodo = async (pWord)=>{
     }
 }
 
+const deleteTodo = async (pId) => {
+    return await TodoList.destroy({
+        where:{
+            id:pId
+        }
+    })
+}
+
 const deleteWord = async (pId) => {
     return await Words.destroy({
         where:{
@@ -119,5 +127,5 @@ const createLib= async (data)=>{
 }
 
 export default {
-    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences,createLib,getTodoList,createTodo
+    getWordsList, createWord, deleteWord, updateWordById, getQuizQuestions,getFilteredSentences,createLib,getTodoList,createTodo,deleteTodo
 }
