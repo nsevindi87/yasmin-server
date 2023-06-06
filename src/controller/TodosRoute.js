@@ -15,9 +15,9 @@ router.get('/', async (req, res, next) => {
 //ADD NEW TODO
 router.post("/", async (req, res, next) => {
     try {
-        console.log(word.date)
-        const newWord = await wordsRepository.createTodo(word);
-        return res.send(newWord)
+        const todo = req.body
+        const newTodo = await wordsRepository.createTodo(todo);
+        return res.send(newTodo)
     } catch (error) {
         return next({ status: 500, message: error.message })
     }

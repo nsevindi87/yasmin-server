@@ -4,7 +4,7 @@ import Words from "../model/WordsModel.js"
 
 
 //ADD List to WORD
-router.post("/", async (req, res, next) => {
+router.post("/addList", async (req, res, next) => {
     try {
         const { pListName, pId } = req.body
         const updatedWord = await Words.findByPk(pId);
@@ -24,6 +24,7 @@ router.post("/", async (req, res, next) => {
         const updatedWord = await Words.findByPk(pId);
         updatedWord.wordCategory = "";
         await updatedWord.save()
+        res.send("OLDUU 2")
     } catch (error) {
         return next({ status: 500, message: error.message })
     }

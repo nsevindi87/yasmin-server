@@ -31,14 +31,10 @@ const Words = sequelize.define("Words", {
     wordCategory: {
         type: DataTypes.TEXT,
         allowNull: true
-    },
-    createdAt: {
-        type: DataTypes.DATE
-    },
-    updatedAt: {
-        type: DataTypes.DATE
     }
-});
+}, {
+    timestamps: false, // Zaman damgası sütununu atla
+  });
 
 
 export default Words;

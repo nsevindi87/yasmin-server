@@ -4,11 +4,13 @@ import "./config/database.js"
 
 //ROUTES IMPORT
 import WordsRoute from "./controller/WordsRoute.js";
+import AsideWordsRoute from "./controller/AsideWordsRoute.js";
 import WordToListRoute from "./controller/WordToListRoute.js"
 import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
 import QuizQuestionsRoute from "./controller/QuizQuestionsRoute.js"
 import FindExampleRoute from "./controller/FindExampleRoute.js"
 import TodosRoute from "./controller/TodosRoute.js"
+import UserRoute from "./controller/UserRoute.js"
 
 const app = express()
 
@@ -19,11 +21,14 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROUTES
 app.use("/words", WordsRoute);
+app.use("/asideWords", AsideWordsRoute);
 app.use("/wordtolist", WordToListRoute);
 app.use("/delwordfromlist", DelWordFromListRoute);
 app.use("/quizquestions", QuizQuestionsRoute);
 app.use("/findExample", FindExampleRoute);
 app.use("/todos", TodosRoute);
+app.use("/users", UserRoute);
+
 
 const port = 3302
 

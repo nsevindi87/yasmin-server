@@ -1,33 +1,35 @@
-import { Sequelize } from "sequelize"; 
-import { DataTypes } from "sequelize"
+import { Sequelize,DataTypes } from "sequelize"; 
 
 const sequelize = new Sequelize('yasmin', 'admin', 'password', {
     host: 'localhost',
     dialect: 'mysql'
   });
 
-const Users = sequelize.define("Users", {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+  const User = sequelize.define('User', {
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    userName: {
-        type: DataTypes.STRING,
-        allowNull: false
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    userEmail: {
-        type: DataTypes.TEXT,
-        allowNull: false
+    birthday:{
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    createdAt: {
-        type: DataTypes.DATE
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     },
-    updatedAt: {
-        type: DataTypes.DATE
-    }
-});
-
-
-
-export default Users;
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: "user"
+    },
+  }, {
+    tableName: 'Users',
+    timestamps: false
+  });
+  
+export default User;

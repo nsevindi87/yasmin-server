@@ -11,10 +11,18 @@ import TodoList from "../model/TodoListModel.js"
 ==
 ==================================================================================================*/
 //Get all Data
-const getWordsList = () => {
-     return Words.findAll()
+const getWordsList = (pId) => {
+     return Words.findAll({
+      where: { userId: pId }
+    })
   }
 
+//Get all Data for Aside
+const getAsideWordsList = (pId) => {
+     return Words.findAll({
+      where: { userId: pId }
+    })
+ }
 
 //Add New Word to List
 const createWord = async (pWord)=>{
@@ -61,7 +69,6 @@ const getQuizQuestions = async () => {
           order: Sequelize.literal('RAND()'),
           limit: 5,
         });
-        console.log("Context" + questions);
         return questions;
       } catch (error) {
         console.error(error);
@@ -118,9 +125,9 @@ const getTodoList = () => {
 
 
 //Add New Word to List
-const createTodo = async (pWord)=>{
+const createTodo = async (pTodo)=>{
  try {
-     const newPost = await TodoList.create(pWord)
+     const newPost = await TodoList.create(pTodo)
      return newPost
  } catch (error) {
      console.log(error)
@@ -153,5 +160,5 @@ const updateTodoById = async (pId, updatedPost)=>{
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
-     createTodo,deleteTodo,updateTodoById
+     createTodo,deleteTodo,updateTodoById,getAsideWordsList
 }

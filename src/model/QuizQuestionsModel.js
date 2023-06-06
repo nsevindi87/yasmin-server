@@ -27,14 +27,10 @@ const QuizQuestions = sequelize.define("QuizQuestions", {
     },
     german_example: {
         type: DataTypes.TEXT,
-    },
-    createdAt: {
-        type: DataTypes.DATE
-    },
-    updatedAt: {
-        type: DataTypes.DATE
     }
-});
+}, {
+    timestamps: false, // Zaman damgası sütununu atla
+  });
 
 
 export default QuizQuestions;
