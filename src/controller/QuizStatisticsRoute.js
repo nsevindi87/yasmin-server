@@ -2,10 +2,20 @@ import express from "express";
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 
-router.get('/:id', async (req, res, next) => {
+router.get('/all/:id', async (req, res, next) => {
     try {
         const pId = req.params.id;
         let statistics = await wordsRepository.getStatistics(pId);
+        return res.status(200).send(statistics);
+    } catch (error) {
+        return next({ status: 404, message: error })
+    }
+});
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const pId = req.params.id;
+        let statistics = await wordsRepository.getFiveStatistics(pId);
         return res.status(200).send(statistics);
     } catch (error) {
         return next({ status: 404, message: error })

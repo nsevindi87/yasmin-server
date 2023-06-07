@@ -24,9 +24,6 @@ const QuizStatistics = sequelize.define("QuizStatistics", {
     score: {
         type: DataTypes.INTEGER,
     }
-}, {
-    timestamps: false
-  });
-
+});
 
 export default QuizStatistics;

@@ -113,6 +113,21 @@ const getStatistics = async (pId) => {
   }
 }
 
+//Get 5 Statistics
+const getFiveStatistics =async (pId) =>{
+  try {
+    const statistics = await QuizStatistics.findAll({
+      where: { userId: pId },
+      order: [['createdAt', 'DESC']],
+      limit: 5
+    });
+    return statistics
+  } catch (error) {
+    console.error('Error fetching user word count:', error);
+    throw new Error('Failed to fetch user word count');
+  }
+}
+
 
  //Add New Statistic to List
 const createStatistic = async (pStatistic)=>{
@@ -212,5 +227,5 @@ export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
-     createStatistic,getStatistics
+     createStatistic,getStatistics,getFiveStatistics
 }
