@@ -5,8 +5,8 @@ const router = express.Router();
 router.get('/:id', async (req, res, next) => {
     try {
         const pId = req.params.id;
-        let words = await wordsRepository.getWordsList(pId);
-        return res.status(200).json(words);
+        let todos = await wordsRepository.getWordsList(pId);
+        return res.status(200).json(todos);
     } catch (error) {
         return next({ status: 404, message: error })
     }

@@ -115,11 +115,11 @@ const getFilteredSentences = async (pValue) => {
 ==================================================================================================*/
 
 
-
 //Get all TodoList
-const getTodoList = () => {
+const getTodoList = (pId) => {
   return TodoList.findAll({
-   order: [['date', 'ASC'], ['time', 'ASC']],
+    where: { userId: pId },
+   order: [['date', 'ASC'], ['time', 'ASC']]
   })
 }
 
