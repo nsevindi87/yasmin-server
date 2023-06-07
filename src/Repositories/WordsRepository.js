@@ -79,11 +79,40 @@ const getQuizQuestions = async () => {
 
 //!STATISTICS
 //Get Statistics
-const getStatistics = (pId) => {
-  return QuizStatistics.findAll({
-   where: { userId: pId }
- })
+const getStatistics = async (pId) => {
+  try {
+    const result = await QuizStatistics.findAll({
+      where: {
+        userId: pId,
+      },
+      attributes: [
+        [Sequelize.fn('sum', Sequelize.literal('questions')), 'totalQuestions'],
+        [Sequelize.fn('sum', Sequelize.literal('correctAnswers')), 'totalCorrectAnswers'],
+        [Sequelize.fn('sum', Sequelize.literal('wrongAnswers')), 'totalWrongAnswers'],
+        [Sequelize.fn('sum', Sequelize.literal('score')), 'totalScore'],
+      ],
+      raw: true,
+    });
+
+    const {
+      totalQuestions = 0,
+      totalCorrectAnswers = 0,
+      totalWrongAnswers = 0,
+      totalScore = 0,
+    } = result[0];
+
+    return {
+      totalQuestions,
+      totalCorrectAnswers,
+      totalWrongAnswers,
+      totalScore,
+    };
+  } catch (error) {
+    console.error('Error fetching user word count:', error);
+    throw new Error('Failed to fetch user word count');
+  }
 }
+
 
  //Add New Statistic to List
 const createStatistic = async (pStatistic)=>{
@@ -183,5 +212,5 @@ export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
-     createStatistic
+     createStatistic,getStatistics
 }

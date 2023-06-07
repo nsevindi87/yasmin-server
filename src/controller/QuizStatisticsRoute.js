@@ -6,7 +6,7 @@ router.get('/:id', async (req, res, next) => {
     try {
         const pId = req.params.id;
         let statistics = await wordsRepository.getStatistics(pId);
-        return res.status(200).json(statistics);
+        return res.status(200).send(statistics);
     } catch (error) {
         return next({ status: 404, message: error })
     }
