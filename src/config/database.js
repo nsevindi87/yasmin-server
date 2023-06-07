@@ -1,6 +1,7 @@
 import sequelize from './connection.js';
 import Words from '../model/WordsModel.js';
 import QuizQuestions from "../model/QuizQuestionsModel.js"
+import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import TodoList from "../model/TodoListModel.js"
 import User from "../model/UsersModel.js"
@@ -14,6 +15,9 @@ TodoList.belongsTo(User, { foreignKey: 'userId' });
 User.hasMany(QuizQuestions, { foreignKey: 'userId', onDelete: 'CASCADE' });
 QuizQuestions.belongsTo(User, { foreignKey: 'userId' });
 
+User.hasMany(QuizStatistics, { foreignKey: 'userId', onDelete: 'CASCADE' });
+QuizStatistics.belongsTo(User, { foreignKey: 'userId' });
+
 
 const connectToDatabase = async () => {
   try {
@@ -22,6 +26,7 @@ const connectToDatabase = async () => {
     console.log('Connection has been established successfully.');
     await Words.sync({alter:true});
     await QuizQuestions.sync({alter:true});
+    await QuizStatistics.sync({alter:true});
     await EngTrSentenceEx.sync({alter:true});
     await TodoList.sync({alter:true})
     await User.sync({alter:true});

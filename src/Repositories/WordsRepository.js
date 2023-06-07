@@ -1,5 +1,6 @@
 import Words from "../model/WordsModel.js"
 import QuizQuestions from "../model/QuizQuestionsModel.js"
+import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
@@ -67,7 +68,7 @@ const getQuizQuestions = async () => {
     try {
         const questions = await QuizQuestions.findAll({
           order: Sequelize.literal('RAND()'),
-          limit: 5,
+          limit: 2,
         });
         return questions;
       } catch (error) {
@@ -75,6 +76,27 @@ const getQuizQuestions = async () => {
         return [];
       }
  }
+
+//!STATISTICS
+//Get Statistics
+const getStatistics = (pId) => {
+  return QuizStatistics.findAll({
+   where: { userId: pId }
+ })
+}
+
+ //Add New Statistic to List
+const createStatistic = async (pStatistic)=>{
+  try {
+      const newStatistic = await QuizStatistics.create(pStatistic)
+      return newStatistic
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+
+ 
 
  /* ==============================================================================================
 == //!    SENTENCES
@@ -160,5 +182,6 @@ const updateTodoById = async (pId, updatedPost)=>{
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
-     createTodo,deleteTodo,updateTodoById,getAsideWordsList
+     createTodo,deleteTodo,updateTodoById,getAsideWordsList,
+     createStatistic
 }
