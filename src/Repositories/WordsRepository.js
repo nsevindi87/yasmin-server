@@ -68,7 +68,7 @@ const getQuizQuestions = async () => {
     try {
         const questions = await QuizQuestions.findAll({
           order: Sequelize.literal('RAND()'),
-          limit: 2,
+          limit: 5,
         });
         return questions;
       } catch (error) {
