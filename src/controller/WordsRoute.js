@@ -2,6 +2,14 @@ import express from "express";
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 
+router.get('/', async (req, res, next) => {
+    try {
+        let todos = await wordsRepository.getAllWordsList();
+        return res.status(200).json(todos);
+    } catch (error) {
+        return next({ status: 404, message: error })
+    }
+});
 router.get('/:id', async (req, res, next) => {
     try {
         const pId = req.params.id;

@@ -12,6 +12,11 @@ import TodoList from "../model/TodoListModel.js"
 ==
 ==================================================================================================*/
 //Get all Data
+const getAllWordsList = () => {
+     return Words.findAll()
+  }
+
+//Get all Data
 const getWordsList = (pId) => {
      return Words.findAll({
       where: { userId: pId }
@@ -227,5 +232,5 @@ export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
-     createStatistic,getStatistics,getFiveStatistics
+     createStatistic,getStatistics,getFiveStatistics,getAllWordsList
 }
