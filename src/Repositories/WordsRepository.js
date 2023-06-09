@@ -41,6 +41,7 @@ const createWord = async (pWord)=>{
 }
 
 
+
 const deleteWord = async (pId) => {
     return await Words.destroy({
         where:{
@@ -48,6 +49,8 @@ const deleteWord = async (pId) => {
         }
     })
 }
+
+
 
 //Update Word to List
 const updateWordById = async (pId, updatedPost)=>{
@@ -92,6 +95,24 @@ const getAllQuizQuestions = async () => {
         return [];
       }
  }
+
+ //Add New Question to List
+const createQuestion = async (pQuestion)=>{
+  try {
+      const newPost = await QuizQuestions.create(pQuestion)
+      return newPost
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+const deleteQuestion = async (pId) => {
+  return await QuizQuestions.destroy({
+      where:{
+          id:pId
+      }
+  })
+}
 
 //!STATISTICS
 //Get Statistics
@@ -238,11 +259,11 @@ const updateTodoById = async (pId, updatedPost)=>{
   }
 }
 
-
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
      getAllQuizQuestions,
+     createQuestion,deleteQuestion,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList
 }
