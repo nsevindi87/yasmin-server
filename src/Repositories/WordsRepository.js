@@ -66,6 +66,7 @@ const updateWordById = async (pId, updatedPost)=>{
     }
 }
 
+
 /* ==============================================================================================
 == //!    QUIZ
 ==
@@ -112,6 +113,21 @@ const deleteQuestion = async (pId) => {
           id:pId
       }
   })
+}
+
+
+//Update Question to List
+const updateQuestionById = async (pId, updatedPost)=>{
+  try {
+      const word = await QuizQuestions.findByPk(pId)
+      if(word){
+          await QuizQuestions.update(updatedPost, {where: {id: pId}})
+          return
+      }
+      return {msg: "No word found with this ID"}
+  } catch (error) {
+      console.log(error)
+  }
 }
 
 //!STATISTICS
@@ -263,7 +279,7 @@ export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
      getAllQuizQuestions,
-     createQuestion,deleteQuestion,
+     createQuestion,deleteQuestion,updateQuestionById,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList
 }
