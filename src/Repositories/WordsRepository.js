@@ -181,7 +181,7 @@ const getFilteredSentences = async (pValue) => {
                   }
                 ]
               },
-        limit:10
+        limit:30
         })
         console.log(pValue)
         return sentences;
