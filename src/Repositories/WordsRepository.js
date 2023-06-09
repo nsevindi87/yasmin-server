@@ -82,6 +82,17 @@ const getQuizQuestions = async () => {
       }
  }
 
+//Get all Data
+const getAllQuizQuestions = async () => {
+    try {
+        const questions = await QuizQuestions.findAll();
+        return questions;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+ }
+
 //!STATISTICS
 //Get Statistics
 const getStatistics = async (pId) => {
@@ -231,6 +242,7 @@ const updateTodoById = async (pId, updatedPost)=>{
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
+     getAllQuizQuestions,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList
 }

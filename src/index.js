@@ -8,6 +8,7 @@ import AsideWordsRoute from "./controller/AsideWordsRoute.js";
 import WordToListRoute from "./controller/WordToListRoute.js"
 import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
 import QuizQuestionsRoute from "./controller/QuizQuestionsRoute.js"
+import AllQuizQuestionsRoute from "./controller/AllQuizQuestionsRoute.js"
 import QuizStatisticsRoute from "./controller/QuizStatisticsRoute.js"
 import FindExampleRoute from "./controller/FindExampleRoute.js"
 import TodosRoute from "./controller/TodosRoute.js"
@@ -26,6 +27,7 @@ app.use("/asideWords", AsideWordsRoute);
 app.use("/wordtolist", WordToListRoute);
 app.use("/delwordfromlist", DelWordFromListRoute);
 app.use("/quizquestions", QuizQuestionsRoute);
+app.use("/allQuizQuestions", AllQuizQuestionsRoute);
 app.use("/quizstatistics", QuizStatisticsRoute);
 app.use("/findExample", FindExampleRoute);
 app.use("/todos", TodosRoute);
