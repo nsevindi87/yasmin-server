@@ -41,19 +41,8 @@ const createWord = async (pWord)=>{
     }
 }
 
-//!Contact Page
-//Create Mail
-const createNewMail = async (pMail)=>{
-    try {
-        const newPost = await Contacts.create(pMail)
-        return newPost
-    } catch (error) {
-        console.log(error)
-    }
-}
 
-
-
+//Delete WORD
 const deleteWord = async (pId) => {
     return await Words.destroy({
         where:{
@@ -81,7 +70,6 @@ const updateWordById = async (pId, updatedPost)=>{
 
 /* ==============================================================================================
 == //!    QUIZ
-==
 ==================================================================================================*/
 
 //Get all Data
@@ -209,7 +197,6 @@ const createStatistic = async (pStatistic)=>{
 
  /* ==============================================================================================
 == //!    SENTENCES
-==
 ==================================================================================================*/
 
 //Get Sentences
@@ -242,9 +229,7 @@ const getFilteredSentences = async (pValue) => {
 
 /* ==============================================================================================
 == //!    TODO
-==
 ==================================================================================================*/
-
 
 //Get all TodoList
 const getTodoList = (pId) => {
@@ -286,6 +271,27 @@ const updateTodoById = async (pId, updatedPost)=>{
       console.log(error)
   }
 }
+/* ==============================================================================================
+== //!    CONTACT 
+==================================================================================================*/
+
+//GET ALL MAILS
+const getMails = () => {
+    return Contacts.findAll();
+};
+
+
+//Create Mail
+const createNewMail = async (pMail)=>{
+    try {
+        const newPost = await Contacts.create(pMail)
+        return newPost
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
@@ -294,5 +300,5 @@ export default {
      createQuestion,deleteQuestion,updateQuestionById,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
-     createNewMail
+     createNewMail,getMails
 }
