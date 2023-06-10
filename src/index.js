@@ -13,6 +13,7 @@ import QuizStatisticsRoute from "./controller/QuizStatisticsRoute.js"
 import FindExampleRoute from "./controller/FindExampleRoute.js"
 import TodosRoute from "./controller/TodosRoute.js"
 import UserRoute from "./controller/UserRoute.js"
+import ContactRoute from "./controller/ContactRoute.js"
 
 const app = express()
 
@@ -32,6 +33,7 @@ app.use("/quizstatistics", QuizStatisticsRoute);
 app.use("/findExample", FindExampleRoute);
 app.use("/todos", TodosRoute);
 app.use("/users", UserRoute);
+app.use("/contact", ContactRoute);
 
 
 const port = 3302

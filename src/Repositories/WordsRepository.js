@@ -2,6 +2,7 @@ import Words from "../model/WordsModel.js"
 import QuizQuestions from "../model/QuizQuestionsModel.js"
 import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
+import Contacts from "../model/ContactsModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
 import TodoList from "../model/TodoListModel.js"
@@ -34,6 +35,17 @@ const getAsideWordsList = (pId) => {
 const createWord = async (pWord)=>{
     try {
         const newPost = await Words.create(pWord)
+        return newPost
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//!Contact Page
+//Create Mail
+const createNewMail = async (pMail)=>{
+    try {
+        const newPost = await Contacts.create(pMail)
         return newPost
     } catch (error) {
         console.log(error)
@@ -281,5 +293,6 @@ export default {
      getAllQuizQuestions,
      createQuestion,deleteQuestion,updateQuestionById,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
-     createStatistic,getStatistics,getFiveStatistics,getAllWordsList
+     createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
+     createNewMail
 }
