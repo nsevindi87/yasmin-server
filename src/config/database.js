@@ -3,6 +3,8 @@ import Words from '../model/WordsModel.js';
 import QuizQuestions from "../model/QuizQuestionsModel.js"
 import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
+import EngGeSentenceEx from "../model/ExampleSentencesModel2.js"
+import GeTrSentenceEx from "../model/ExampleSentencesModel3.js"
 import TodoList from "../model/TodoListModel.js"
 import User from "../model/UsersModel.js"
 import Contacts from "../model/ContactsModel.js"
@@ -29,6 +31,8 @@ const connectToDatabase = async () => {
     await QuizQuestions.sync({alter:true});
     await QuizStatistics.sync({alter:true});
     await EngTrSentenceEx.sync({alter:true});
+    await EngGeSentenceEx.sync({alter:true});
+    await GeTrSentenceEx.sync({alter:true});
     await TodoList.sync({alter:true})
     await User.sync({alter:true});
     await Contacts.sync({alter:true});
