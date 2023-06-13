@@ -10,7 +10,9 @@ import DelWordFromListRoute from "./controller/DelWordFromListRoute.js"
 import QuizQuestionsRoute from "./controller/QuizQuestionsRoute.js"
 import AllQuizQuestionsRoute from "./controller/AllQuizQuestionsRoute.js"
 import QuizStatisticsRoute from "./controller/QuizStatisticsRoute.js"
-import FindExampleRoute from "./controller/FindExampleRoute.js"
+import FindEnTrExampleRoute from "./controller/FindEnTrExampleRoute.js"
+import FindEnGeExampleRoute from "./controller/FindEnGeExampleRoute.js"
+import FindGeTrExampleRoute from "./controller/FindGeTrExampleRoute.js"
 import TodosRoute from "./controller/TodosRoute.js"
 import UserRoute from "./controller/UserRoute.js"
 import ContactRoute from "./controller/ContactRoute.js"
@@ -30,7 +32,9 @@ app.use("/delwordfromlist", DelWordFromListRoute);
 app.use("/quizquestions", QuizQuestionsRoute);
 app.use("/allQuizQuestions", AllQuizQuestionsRoute);
 app.use("/quizstatistics", QuizStatisticsRoute);
-app.use("/findExample", FindExampleRoute);
+app.use("/findEnTrExample", FindEnTrExampleRoute);
+app.use("/findEnGeExample", FindEnGeExampleRoute);
+app.use("/findGeTrExample", FindGeTrExampleRoute);
 app.use("/todos", TodosRoute);
 app.use("/users", UserRoute);
 app.use("/contact", ContactRoute);

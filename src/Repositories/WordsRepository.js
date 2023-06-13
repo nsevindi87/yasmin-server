@@ -2,6 +2,7 @@ import Words from "../model/WordsModel.js"
 import QuizQuestions from "../model/QuizQuestionsModel.js"
 import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
+import EngGeSentenceEx from "../model/ExampleSentencesModel2.js"
 import Contacts from "../model/ContactsModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
@@ -217,7 +218,61 @@ const getFilteredSentences = async (pValue) => {
                   }
                 ]
               },
-        limit:30
+        limit:100
+        })
+        console.log(pValue)
+        return sentences;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+ }
+//Get Sentences
+const getFilteredSentences2 = async (pValue) => {
+    try {
+        const sentences = await EngGeSentenceEx.findAll({
+            where: {
+                [Op.or]: [
+                  {
+                    english: {
+                      [Op.like]: `%${pValue}%`
+                    }
+                  },
+                  {
+                    german: {
+                      [Op.like]: `%${pValue}%`
+                    }
+                  }
+                ]
+              },
+        limit:100
+        })
+        console.log(pValue)
+        return sentences;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+ }
+//Get Sentences
+const getFilteredSentences3 = async (pValue) => {
+    try {
+        const sentences = await EngGeSentenceEx.findAll({
+            where: {
+                [Op.or]: [
+                  {
+                    german: {
+                      [Op.like]: `%${pValue}%`
+                    }
+                  },
+                  {
+                    turkish: {
+                      [Op.like]: `%${pValue}%`
+                    }
+                  }
+                ]
+              },
+        limit:100
         })
         console.log(pValue)
         return sentences;
@@ -300,5 +355,5 @@ export default {
      createQuestion,deleteQuestion,updateQuestionById,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
-     createNewMail,getMails
+     createNewMail,getMails,getFilteredSentences2,getFilteredSentences3
 }
