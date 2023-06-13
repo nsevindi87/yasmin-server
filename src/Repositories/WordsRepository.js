@@ -3,6 +3,7 @@ import QuizQuestions from "../model/QuizQuestionsModel.js"
 import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import EngGeSentenceEx from "../model/ExampleSentencesModel2.js"
+import GeTrSentenceEx from "../model/ExampleSentencesModel3.js"
 import Contacts from "../model/ContactsModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
@@ -257,7 +258,7 @@ const getFilteredSentences2 = async (pValue) => {
 //Get Sentences
 const getFilteredSentences3 = async (pValue) => {
     try {
-        const sentences = await EngGeSentenceEx.findAll({
+        const sentences = await GeTrSentenceEx.findAll({
             where: {
                 [Op.or]: [
                   {
