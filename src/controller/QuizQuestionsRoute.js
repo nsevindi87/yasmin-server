@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-//ADD NEW WORD
+//ADD NEW questions
 router.post("/", async (req, res, next) => {
     try {
         const question = req.body

@@ -16,6 +16,9 @@ import FindGeTrExampleRoute from "./controller/FindGeTrExampleRoute.js"
 import TodosRoute from "./controller/TodosRoute.js"
 import UserRoute from "./controller/UserRoute.js"
 import ContactRoute from "./controller/ContactRoute.js"
+import TextReviewRoute from "./controller/TextReviewRoute.js"
+import errorHandler from "./middleware/errorHandler.js"
+import errorHandler404 from "./middleware/errorHandler404.js"
 
 const app = express()
 
@@ -35,9 +38,13 @@ app.use("/quizstatistics", QuizStatisticsRoute);
 app.use("/findEnTrExample", FindEnTrExampleRoute);
 app.use("/findEnGeExample", FindEnGeExampleRoute);
 app.use("/findGeTrExample", FindGeTrExampleRoute);
+app.use("/textreview", TextReviewRoute);
 app.use("/todos", TodosRoute);
 app.use("/users", UserRoute);
 app.use("/contact", ContactRoute);
+app.use(errorHandler)
+app.use(errorHandler404)
+
 
 
 const port = 3302

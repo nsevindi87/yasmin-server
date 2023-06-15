@@ -10,6 +10,7 @@ router.get('/', async (req, res, next) => {
         return next({ status: 404, message: error })
     }
 });
+
 router.get('/:id', async (req, res, next) => {
     try {
         const pId = req.params.id;

@@ -8,6 +8,7 @@ import GeTrSentenceEx from "../model/ExampleSentencesModel3.js"
 import TodoList from "../model/TodoListModel.js"
 import User from "../model/UsersModel.js"
 import Contacts from "../model/ContactsModel.js"
+import Texts from "../model/Texts.js"
 
 User.hasMany(Words, { foreignKey: 'userId', onDelete: "CASCADE" });
 Words.belongsTo(User, { foreignKey: 'userId' });
@@ -36,6 +37,7 @@ const connectToDatabase = async () => {
     await TodoList.sync({alter:true})
     await User.sync({alter:true});
     await Contacts.sync({alter:true});
+    await Texts.sync({alter:true});
     console.log("OK!")
   } catch (error) {
     console.error('Unable to connect to the database:', error);

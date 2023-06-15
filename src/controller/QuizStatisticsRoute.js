@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 
-//ADD NEW WORD
+//ADD NEW statistic
 router.post("/", async (req, res, next) => {
     try {
         const statistics = req.body

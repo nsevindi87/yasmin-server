@@ -4,6 +4,7 @@ import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import EngGeSentenceEx from "../model/ExampleSentencesModel2.js"
 import GeTrSentenceEx from "../model/ExampleSentencesModel3.js"
+import Texts from "../model/Texts.js"
 import Contacts from "../model/ContactsModel.js"
 import { Sequelize } from "sequelize";
 import { Op } from "sequelize";
@@ -327,6 +328,7 @@ const updateTodoById = async (pId, updatedPost)=>{
       console.log(error)
   }
 }
+
 /* ==============================================================================================
 == //!    CONTACT 
 ==================================================================================================*/
@@ -347,7 +349,20 @@ const createNewMail = async (pMail)=>{
     }
 }
 
+/* ==============================================================================================
+== //!    TEXT REVIEWS 
+==================================================================================================*/
 
+//GET ALL MAILS
+const getAllTexts = () => {
+    return Texts.findAll();
+};
+
+const getTextById = (pId) => {
+  return Texts.findOne({
+   where: { id: pId }
+ })
+}
 
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
@@ -356,5 +371,6 @@ export default {
      createQuestion,deleteQuestion,updateQuestionById,
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
-     createNewMail,getMails,getFilteredSentences2,getFilteredSentences3
+     createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
+     getAllTexts,getTextById
 }
