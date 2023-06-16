@@ -46,6 +46,7 @@ const createWord = async (pWord)=>{
 }
 
 
+
 //Delete WORD
 const deleteWord = async (pId) => {
     return await Words.destroy({
@@ -380,6 +381,16 @@ const getPersonalText = (pId) => {
  })
 }
 
+//Add New Text to List
+const createText = async (pWord)=>{
+  try {
+      const newPost = await PersonalTexts.create(pWord)
+      return newPost
+  } catch (error) {
+      console.log(error)
+  }
+}
+
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
@@ -388,5 +399,6 @@ export default {
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
-     getAllTexts,getTextById,getPersonalTextsList,getPersonalText
+     getAllTexts,getTextById,getPersonalTextsList,getPersonalText,
+     createText
 }

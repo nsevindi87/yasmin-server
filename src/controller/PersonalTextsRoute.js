@@ -22,5 +22,16 @@ router.get('/text/:id', async (req, res, next) => {
     }
 });
 
+//ADD NEW WORD
+router.post("/", async (req, res, next) => {
+    try {
+        const word = req.body
+        const newWord = await wordsRepository.createText(word);
+        return res.send(newWord)
+    } catch (error) {
+        return next({ status: 500, message: error.message })
+    }
+});
+
 export default router;
 
