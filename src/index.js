@@ -40,7 +40,7 @@ app.use("/findEnTrExample", FindEnTrExampleRoute);
 app.use("/findEnGeExample", FindEnGeExampleRoute);
 app.use("/findGeTrExample", FindGeTrExampleRoute);
 app.use("/textreview", TextReviewRoute);
-app.use("/textreview/personaltexts", PersonalTextsRoute);
+app.use("/personaltextreview", PersonalTextsRoute);
 app.use("/todos", TodosRoute);
 app.use("/users", UserRoute);
 app.use("/contact", ContactRoute);

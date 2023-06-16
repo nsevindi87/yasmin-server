@@ -339,7 +339,6 @@ const getMails = () => {
     return Contacts.findAll();
 };
 
-
 //Create Mail
 const createNewMail = async (pMail)=>{
     try {

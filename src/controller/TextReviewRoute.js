@@ -2,6 +2,7 @@ import express from "express";
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 
+//GET ALL TEXTS
 router.get('/', async (req, res, next) => {
     try {
         let textReviews = await wordsRepository.getAllTexts();
@@ -11,7 +12,9 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/english/:id', async (req, res, next) => {
+
+//Get Personal Texts By UserId
+router.get('/:id', async (req, res, next) => {
     try {
         const pId = req.params.id;
         let text = await wordsRepository.getTextById(pId);
@@ -20,5 +23,6 @@ router.get('/english/:id', async (req, res, next) => {
         return next({ status: 404, message: error })
     }
 });
+
 
 export default router;
