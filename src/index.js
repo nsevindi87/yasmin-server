@@ -17,6 +17,7 @@ import TodosRoute from "./controller/TodosRoute.js"
 import UserRoute from "./controller/UserRoute.js"
 import ContactRoute from "./controller/ContactRoute.js"
 import TextReviewRoute from "./controller/TextReviewRoute.js"
+import PersonalTextsRoute from "./controller/PersonalTextsRoute.js"
 import errorHandler from "./middleware/errorHandler.js"
 import errorHandler404 from "./middleware/errorHandler404.js"
 
@@ -39,6 +40,7 @@ app.use("/findEnTrExample", FindEnTrExampleRoute);
 app.use("/findEnGeExample", FindEnGeExampleRoute);
 app.use("/findGeTrExample", FindGeTrExampleRoute);
 app.use("/textreview", TextReviewRoute);
+app.use("/textreview/personaltexts", PersonalTextsRoute);
 app.use("/todos", TodosRoute);
 app.use("/users", UserRoute);
 app.use("/contact", ContactRoute);

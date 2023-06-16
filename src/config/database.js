@@ -5,6 +5,7 @@ import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import EngGeSentenceEx from "../model/ExampleSentencesModel2.js"
 import GeTrSentenceEx from "../model/ExampleSentencesModel3.js"
+import PersonalTexts from "../model/PersonalTextsModel.js"
 import TodoList from "../model/TodoListModel.js"
 import User from "../model/UsersModel.js"
 import Contacts from "../model/ContactsModel.js"
@@ -22,6 +23,9 @@ QuizQuestions.belongsTo(User, { foreignKey: 'userId' });
 User.hasMany(QuizStatistics, { foreignKey: 'userId', onDelete: 'CASCADE' });
 QuizStatistics.belongsTo(User, { foreignKey: 'userId' });
 
+User.hasMany(PersonalTexts, { foreignKey: 'userId', onDelete: 'CASCADE' });
+PersonalTexts.belongsTo(User, { foreignKey: 'userId' });
+
 
 const connectToDatabase = async () => {
   try {
@@ -35,6 +39,7 @@ const connectToDatabase = async () => {
     await EngGeSentenceEx.sync({alter:true});
     await GeTrSentenceEx.sync({alter:true});
     await TodoList.sync({alter:true})
+    await PersonalTexts.sync({alter:true})
     await User.sync({alter:true});
     await Contacts.sync({alter:true});
     await Texts.sync({alter:true});

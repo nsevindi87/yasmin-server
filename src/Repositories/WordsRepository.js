@@ -4,6 +4,7 @@ import QuizStatistics from "../model/QuizStatisticsModel.js"
 import EngTrSentenceEx from "../model/ExampleSentencesModel.js"
 import EngGeSentenceEx from "../model/ExampleSentencesModel2.js"
 import GeTrSentenceEx from "../model/ExampleSentencesModel3.js"
+import PersonalTexts from "../model/PersonalTextsModel.js"
 import Texts from "../model/Texts.js"
 import Contacts from "../model/ContactsModel.js"
 import { Sequelize } from "sequelize";
@@ -355,12 +356,23 @@ const createNewMail = async (pMail)=>{
 
 //GET ALL MAILS
 const getAllTexts = () => {
-    return Texts.findAll();
+  return Texts.findAll();
 };
 
 const getTextById = (pId) => {
   return Texts.findOne({
-   where: { id: pId }
+    where: { id: pId }
+  })
+}
+
+/* ==============================================================================================
+== //!    PERSONAL TEXTS  
+==================================================================================================*/
+
+//Get all Data
+const getPersonalTextsList = (pId) => {
+  return PersonalTexts.findAll({
+   where: { userId: pId }
  })
 }
 
@@ -372,5 +384,5 @@ export default {
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
-     getAllTexts,getTextById
+     getAllTexts,getTextById,getPersonalTextsList
 }
