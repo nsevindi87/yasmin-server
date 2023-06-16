@@ -374,6 +374,11 @@ const getPersonalTextsList = (pId) => {
    where: { userId: pId }
  })
 }
+const getPersonalText = (pId) => {
+  return PersonalTexts.findOne({
+   where: { id: pId }
+ })
+}
 
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
@@ -383,5 +388,5 @@ export default {
      createTodo,deleteTodo,updateTodoById,getAsideWordsList,
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
-     getAllTexts,getTextById,getPersonalTextsList
+     getAllTexts,getTextById,getPersonalTextsList,getPersonalText
 }
