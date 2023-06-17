@@ -73,6 +73,7 @@ const updateWordById = async (pId, updatedPost)=>{
 }
 
 
+
 /* ==============================================================================================
 == //!    QUIZ
 ==================================================================================================*/
@@ -391,6 +392,21 @@ const createText = async (pWord)=>{
   }
 }
 
+//Update Text
+const updatetextById = async (pId, updatedPost)=>{
+  try {
+      const text = await PersonalTexts.findByPk(pId)
+      if(text){
+          await PersonalTexts.update(updatedPost, {where: {id: pId}})
+          return
+      }
+      return {msg: "No text found with this ID"}
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
@@ -400,5 +416,5 @@ export default {
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
      getAllTexts,getTextById,getPersonalTextsList,getPersonalText,
-     createText
+     createText,updatetextById
 }

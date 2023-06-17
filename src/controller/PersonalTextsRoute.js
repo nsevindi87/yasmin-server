@@ -33,5 +33,17 @@ router.post("/", async (req, res, next) => {
     }
 });
 
+router.put("/text/:id", async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const updatedText = req.body;
+        const newtext = await wordsRepository.updatetextById(id, updatedText);
+        return res.status(200).send(newtext)
+    } catch (error) {
+        next({ status: 500, message: error.message })
+    }
+
+});
+
 export default router;
 
