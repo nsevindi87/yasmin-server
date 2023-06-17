@@ -45,5 +45,12 @@ router.put("/text/:id", async (req, res, next) => {
 
 });
 
+//DELETE WORD
+router.delete("/text/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleteText = await wordsRepository.deleteText(id);
+    return res.send(`word ${deleteText} is deleted`)
+});
+
 export default router;
 

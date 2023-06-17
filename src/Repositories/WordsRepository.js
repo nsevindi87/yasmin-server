@@ -407,6 +407,17 @@ const updatetextById = async (pId, updatedPost)=>{
 }
 
 
+//Delete text
+const deleteText = async (pId) => {
+  return await PersonalTexts.destroy({
+      where:{
+          id:pId
+      }
+  })
+}
+
+
+
 export default {
     getWordsList, createWord, deleteWord, updateWordById,
      getQuizQuestions,getFilteredSentences,getTodoList,
@@ -416,5 +427,5 @@ export default {
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
      getAllTexts,getTextById,getPersonalTextsList,getPersonalText,
-     createText,updatetextById
+     createText,updatetextById,deleteText
 }
