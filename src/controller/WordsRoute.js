@@ -12,11 +12,12 @@ async function printPDF(listName) {
  }
 
  //generate PDF by id
-router.get('/pdf/:listName', async (req, res, next) => {
+router.get('/pdf/:id', async (req, res, next) => {
     try {
-       const pdf = await printPDF(req.params.listName);
+       const pdf = await printPDF(req.params.id);
        res.setHeader('Content-Type', 'application/pdf');
        res.setHeader('Content-Disposition', 'attachment; filename=example.pdf');
+
        return res.send(pdf);
     } catch (error) {
        console.error('Error generating PDF:', error);
