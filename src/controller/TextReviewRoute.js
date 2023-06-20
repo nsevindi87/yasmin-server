@@ -40,12 +40,18 @@ router.put("/:id", async (req, res, next) => {
     try {
         const id = req.params.id;
         const updatedText = req.body;
-        const newText = await wordsRepository.updateTextById(id, updatedText);
+        const newText = await wordsRepository.updateAdminTextById(id, updatedText);
         return res.status(200).send(newText)
     } catch (error) {
         next({ status: 500, message: error.message })
     }
+});
 
+//DELETE WORD
+router.delete("/:id", async (req, res) => {
+    const pId = req.params.id;
+    const deleteText = await wordsRepository.deleteAdminText(pId);
+    return res.send(`word ${deleteText} is deleted`)
 });
 
 export default router;

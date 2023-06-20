@@ -375,6 +375,33 @@ const createNewText = async (pText)=>{
       console.log(error)
   }
 }
+
+
+const updateAdminTextById = async (pId, updatedPost)=>{
+  try {
+      const text = await Texts.findByPk(pId)
+      if(text){
+          await Texts.update(updatedPost, {where: {id: pId}})
+          return
+      }
+      return {msg: "No text found with this ID"}
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+//Delete ADMIN TEXT
+const deleteAdminText
+= async (pId) => {
+  return await Texts.destroy({
+      where:{
+          id:pId
+      }
+  })
+}
+
+
+
 /* ==============================================================================================
 == //!    PERSONAL TEXTS  
 ==================================================================================================*/
@@ -425,19 +452,6 @@ const deleteText = async (pId) => {
   })
 }
 
-const updateAdminTextById = async (pId, updatedPost)=>{
-  try {
-      const text = await Texts.findByPk(pId)
-      if(text){
-          await Texts.update(updatedPost, {where: {id: pId}})
-          return
-      }
-      return {msg: "No text found with this ID"}
-  } catch (error) {
-      console.log(error)
-  }
-}
-
 
 
 
@@ -453,5 +467,5 @@ export default {
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
      getAllTexts,getTextById,getPersonalTextsList,getPersonalText,
      createText,updatetextById,deleteText,updateAdminTextById,
-     createNewText
+     createNewText,deleteAdminText
 }
