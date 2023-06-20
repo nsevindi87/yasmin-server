@@ -24,5 +24,28 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+//ADD NEW TEXT
+router.post("/", async (req, res, next) => {
+    try {
+        const text = req.body
+        const newText = await wordsRepository.createNewText(text);
+        return res.send(newText)
+    } catch (error) {
+        return next({ status: 500, message: error.message })
+    }
+});
+
+
+router.put("/:id", async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const updatedText = req.body;
+        const newText = await wordsRepository.updateTextById(id, updatedText);
+        return res.status(200).send(newText)
+    } catch (error) {
+        next({ status: 500, message: error.message })
+    }
+
+});
 
 export default router;

@@ -366,6 +366,15 @@ const getTextById = (pId) => {
   })
 }
 
+//Add New Admin Text 
+const createNewText = async (pText)=>{
+  try {
+      const newText = await Texts.create(pText)
+      return newText
+  } catch (error) {
+      console.log(error)
+  }
+}
 /* ==============================================================================================
 == //!    PERSONAL TEXTS  
 ==================================================================================================*/
@@ -392,6 +401,7 @@ const createText = async (pWord)=>{
   }
 }
 
+
 //Update Text
 const updatetextById = async (pId, updatedPost)=>{
   try {
@@ -406,7 +416,6 @@ const updatetextById = async (pId, updatedPost)=>{
   }
 }
 
-
 //Delete text
 const deleteText = async (pId) => {
   return await PersonalTexts.destroy({
@@ -415,6 +424,22 @@ const deleteText = async (pId) => {
       }
   })
 }
+
+const updateAdminTextById = async (pId, updatedPost)=>{
+  try {
+      const text = await Texts.findByPk(pId)
+      if(text){
+          await Texts.update(updatedPost, {where: {id: pId}})
+          return
+      }
+      return {msg: "No text found with this ID"}
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+
+
 
 
 
@@ -427,5 +452,6 @@ export default {
      createStatistic,getStatistics,getFiveStatistics,getAllWordsList,
      createNewMail,getMails,getFilteredSentences2,getFilteredSentences3,
      getAllTexts,getTextById,getPersonalTextsList,getPersonalText,
-     createText,updatetextById,deleteText
+     createText,updatetextById,deleteText,updateAdminTextById,
+     createNewText
 }
