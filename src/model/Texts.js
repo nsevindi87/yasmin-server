@@ -11,17 +11,21 @@ const Texts = sequelize.define("Texts", {
         primaryKey: true,
         autoIncrement: true
     },
-    english: {
+    title: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    english: {
+        type: DataTypes.TEXT,
+        allowNull: true
     },
     german: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     },
     turkish: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     }
 },
     {

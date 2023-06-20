@@ -2,29 +2,6 @@ import express from "express";
 import wordsRepository from "../repositories/wordsRepository.js";
 const router = express.Router();
 
-async function printPDF(listName) {
-    const browser = await puppeteer.launch({ headless: true });/// Puppeteer launches the Chromium browser in headless mode, which means that the browser runs in the background without displaying any graphical user interface (GUI).
-    const page = await browser.newPage();///create a new page
-    await page.goto(`http://localhost:3000/${listName}`, { waitUntil: 'networkidle0' }); //go to the selected post
-    const pdf = await page.pdf({ format: 'A4' }); ///generate PDF
-    await browser.close(); //close the browser
-    return pdf; 
- }
-
- //generate PDF by id
-router.get('/pdf/:id', async (req, res, next) => {
-    try {
-       const pdf = await printPDF(req.params.id);
-       res.setHeader('Content-Type', 'application/pdf');
-       res.setHeader('Content-Disposition', 'attachment; filename=example.pdf');
-
-       return res.send(pdf);
-    } catch (error) {
-       console.error('Error generating PDF:', error);
-       return next({ status: 500, message: 'Error generating PDF' })
-    }
- });
-
 router.get('/', async (req, res, next) => {
     try {
         let todos = await wordsRepository.getAllWordsList();
@@ -43,7 +20,6 @@ router.get('/:id', async (req, res, next) => {
         return next({ status: 404, message: error })
     }
 });
-
 
 //ADD NEW WORD
 router.post("/", async (req, res, next) => {
