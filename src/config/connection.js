@@ -5,4 +5,4 @@ const sequelize = new Sequelize('yasmin', 'admin', 'password', {
   dialect: 'mysql'
 });
 
-export default sequelize
+export default sequelize;
